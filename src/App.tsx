@@ -1,11 +1,15 @@
+import { BrowserRouter } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "./styles/global";
 import { themeWhite } from "./styles/theme";
+import { Routes } from "./routes";
 
 function App() {
   return (
     <ThemeProvider theme={themeWhite}>
-      <h1>Marvel</h1>
+      <BrowserRouter>
+        <Routes />
+      </BrowserRouter>
       <GlobalStyle />
     </ThemeProvider>
   );
