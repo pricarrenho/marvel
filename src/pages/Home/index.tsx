@@ -5,7 +5,7 @@ import { Main } from "../../components/Main";
 export const Home = () => {
   return (
     <div>
-      <Header />
+      <Header active />
       <Main />
       <Footer />
     </div>

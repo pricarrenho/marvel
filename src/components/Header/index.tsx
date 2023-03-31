@@ -2,8 +2,9 @@ import { Container } from "../Container";
 import { Input } from "../Input";
 
 import * as S from "./styles";
+import { HeaderProps } from "./types";
 
-export const Header = () => {
+export const Header = ({ active }: HeaderProps) => {
   return (
     <S.Wrapper>
       <Container>
@@ -11,7 +12,7 @@ export const Header = () => {
           <S.LinkTitle to={"/"}>
             <h1>Marvel</h1>
           </S.LinkTitle>
-          <Input />
+          {active && <Input />}
         </S.WrapperContent>
       </Container>
     </S.Wrapper>
