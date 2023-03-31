@@ -87,6 +87,7 @@ export const Main = () => {
 
             return (
               <Button
+                key={index}
                 styleType={
                   buttonOffset === currentPageOffset ? "secondary" : "primary"
                 }

@@ -2,7 +2,7 @@ import md5 from "md5";
 import axios from "axios";
 
 export const getMarvelCharacters = async (pagination: any) => {
-  const url = "http://gateway.marvel.com/v1/public/characters";
+  const url = "https://gateway.marvel.com/v1/public/characters";
   const timestamp = new Date().getTime();
 
   const privateKey = "577b6115809153e62ecb5c567f7afc99da3f62a5";

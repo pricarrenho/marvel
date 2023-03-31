@@ -33,8 +33,8 @@ export const ContentHero = () => {
     <>
       <Container>
         {hero?.map((item: any) => (
-          <div>
-            <S.WrapperContent key={item.id}>
+          <div key={item.id}>
+            <S.WrapperContent>
               <S.Image
                 src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
                 alt={item.id}
@@ -73,7 +73,7 @@ export const ContentHero = () => {
 
               <ul>
                 {item[contentToShow].items.map((item: any) => (
-                  <S.Description>{item.name}</S.Description>
+                  <S.Description key={item.name}>{item.name}</S.Description>
                 ))}
               </ul>
             </S.WrapperContentText>
