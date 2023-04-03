@@ -6,7 +6,7 @@
   <a href="#-technologies">Technologies</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-preview">Preview</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-Getting-started">Getting started</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-project">Project</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-project">Project</a>
 </p>
 
 ## 🧪 Technologies
@@ -27,6 +27,15 @@ Clone the project and access the folder
 
 ```bash
 $ git clone https://github.com/pricarrenho/marvel-app && cd marvel-app
+```
+
+Add environment
+
+```bash
+# Add your environment variable based on .env.example
+REACT_APP_PRIVATE_KEY=//add here your marvel api private key
+REACT_APP_PUBLIC_KEY=//add here your marvel api public key
+
 ```
 
 Follow the steps below
@@ -57,4 +66,6 @@ $ yarn start
 
 ---
 
-<p align="center">Made with 💜 by Priscilla Carrenho</p>
+<p align="center">
+Made with 💜 by <a href="https://www.pricarrenho.com.br">Priscilla Carrenho</a> 
+</p>
