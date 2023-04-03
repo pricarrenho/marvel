@@ -9,7 +9,7 @@ import * as S from "./styles";
 
 export const ContentHero = () => {
   const params = useParams();
-  const [hero, setHero] = useState<any>(null);
+  const [hero, setHero] = useState<string[]>([]);
   const [contentToShow, setContentToShow] =
     useState<ContentToShowType>("series");
 

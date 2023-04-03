@@ -1,7 +1,9 @@
 import md5 from "md5";
 import axios from "axios";
 
-export const getMarvelHero = async (idHero: any) => {
+type getMarvelHeroProps = string | undefined;
+
+export const getMarvelHero = async (idHero: getMarvelHeroProps) => {
   const url = `https://gateway.marvel.com/v1/public/characters/${idHero}`;
   const timestamp = new Date().getTime();
 

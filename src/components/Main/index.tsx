@@ -8,8 +8,8 @@ import * as S from "./styles";
 import { Container } from "../Container";
 
 export const Main = () => {
-  const [characters, setCharacters] = useState<any>(null);
-  const [totalCharacters, setTotalCharacters] = useState<any>(null);
+  const [characters, setCharacters] = useState<string[]>([]);
+  const [totalCharacters, setTotalCharacters] = useState<number>(0);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleClick = (value: PaginationType) => {
