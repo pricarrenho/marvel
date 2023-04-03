@@ -29,93 +29,100 @@ export const Main = () => {
 
   return (
     <Container>
-      <S.WrapperTable>
-        <S.WrapperHead>
-          <tr>
-            <th>Personagens</th>
-            <th>Series</th>
-            <th>Eventos</th>
-          </tr>
-        </S.WrapperHead>
-        {characters?.map((item: any) => (
-          <S.WrapperBody key={item.id}>
+      <S.Wrapper>
+        <S.WrapperTable>
+          <S.WrapperHead>
             <tr>
-              <td>
-                <S.Image
-                  src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                  alt={item.name}
-                />
-
-                <Link to={`/hero/${item.id}`}>
-                  <span>{item.name}</span>
-                </Link>
-              </td>
-
-              <td>
-                {item.series.items
-                  .map((item: any) => <span key={item.name}>{item.name}</span>)
-                  .slice(0, 2)}
-              </td>
-
-              <td>
-                {item.events.items
-                  .map((item: any) => <span key={item.name}>{item.name}</span>)
-                  .slice(0, 2)}
-              </td>
+              <th>Personagens</th>
+              <th>Series</th>
+              <th>Eventos</th>
             </tr>
-          </S.WrapperBody>
-        ))}
-      </S.WrapperTable>
-      <S.Pagination>
-        <Button
-          styleType="primary"
-          onClick={() => handleClick("1")}
-          icon="doubleArrowLeft"
-          disabled={currentPageOffset === 1}
-        />
+          </S.WrapperHead>
+          {characters?.map((item: any) => (
+            <S.WrapperBody key={item.id}>
+              <tr>
+                <td>
+                  <S.Image
+                    src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
+                    alt={item.name}
+                  />
 
-        <Button
-          styleType="primary"
-          onClick={() => handleClick(String(currentPageOffset - 1))}
-          icon="arrowLeft"
-          disabled={currentPageOffset === 1}
-        />
+                  <Link to={`/hero/${item.id}`}>
+                    <span>{item.name}</span>
+                  </Link>
+                </td>
 
-        {Array.from(Array(totalPages).keys())
-          .map((_, index) => {
-            const buttonOffset = index + 1;
+                <td>
+                  {item.series.items
+                    .map((item: any) => (
+                      <span key={item.name}>{item.name}</span>
+                    ))
+                    .slice(0, 2)}
+                </td>
 
-            return (
-              <Button
-                key={index}
-                styleType={
-                  buttonOffset === currentPageOffset ? "secondary" : "primary"
-                }
-                onClick={() => handleClick(String(buttonOffset))}
-              >
-                {buttonOffset}
-              </Button>
-            );
-          })
-          .slice(
-            currentPageOffset <= 1 ? 0 : currentPageOffset - 2,
-            currentPageOffset <= 1 ? 3 : currentPageOffset + 1
-          )}
+                <td>
+                  {item.events.items
+                    .map((item: any) => (
+                      <span key={item.name}>{item.name}</span>
+                    ))
+                    .slice(0, 2)}
+                </td>
+              </tr>
+            </S.WrapperBody>
+          ))}
+        </S.WrapperTable>
 
-        <Button
-          styleType="primary"
-          onClick={() => handleClick(String(currentPageOffset + 1))}
-          icon="arrowRight"
-          disabled={currentPageOffset === totalPages}
-        />
+        <S.Pagination>
+          <Button
+            styleType="primary"
+            onClick={() => handleClick("1")}
+            icon="doubleArrowLeft"
+            disabled={currentPageOffset === 1}
+          />
 
-        <Button
-          styleType="primary"
-          onClick={() => handleClick(String(totalPages))}
-          icon="doubleArrowRight"
-          disabled={currentPageOffset === totalPages}
-        />
-      </S.Pagination>
+          <Button
+            styleType="primary"
+            onClick={() => handleClick(String(currentPageOffset - 1))}
+            icon="arrowLeft"
+            disabled={currentPageOffset === 1}
+          />
+
+          {Array.from(Array(totalPages).keys())
+            .map((_, index) => {
+              const buttonOffset = index + 1;
+
+              return (
+                <Button
+                  key={index}
+                  styleType={
+                    buttonOffset === currentPageOffset ? "secondary" : "primary"
+                  }
+                  onClick={() => handleClick(String(buttonOffset))}
+                >
+                  {buttonOffset}
+                </Button>
+              );
+            })
+            .slice(
+              currentPageOffset <= 1 ? 0 : currentPageOffset - 2,
+              currentPageOffset <= 1 ? 3 : currentPageOffset + 1
+            )}
+
+          <Button
+            styleType="primary"
+            onClick={() => handleClick(String(currentPageOffset + 1))}
+            icon="arrowRight"
+            disabled={currentPageOffset === totalPages}
+          />
+
+          <Button
+            styleType="primary"
+            onClick={() => handleClick(String(totalPages))}
+            icon="doubleArrowRight"
+            disabled={currentPageOffset === totalPages}
+          />
+        </S.Pagination>
+      </S.Wrapper>
     </Container>
   );
 };

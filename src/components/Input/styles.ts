@@ -5,11 +5,13 @@ export const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
+  padding-bottom: 24px;
 
   @media (min-width: 800px) {
     flex-direction: row;
     align-items: center;
     gap: 16px;
+    padding-bottom: 0;
   }
 `;
 

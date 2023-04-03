@@ -1,5 +1,14 @@
 import styled, { css } from "styled-components";
 
+export const Wrapper = styled.div`
+  min-height: calc(100vh - 104px - 100px);
+  padding: 40px 0px 40px 0px;
+
+  @media (min-width: 800px) {
+    padding: 40px 0px 40px 0px;
+  }
+`;
+
 export const WrapperContent = styled.div`
   display: grid;
   grid-template-columns: 1fr;

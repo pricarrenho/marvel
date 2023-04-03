@@ -3,11 +3,6 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.red};
-    margin-top: 80px;
-
-    @media (min-width: 800px) {
-      margin-top: 112px;
-    }
   `}
 `;
 

@@ -1,8 +1,8 @@
 import { Container } from "../Container";
 import { Input } from "../Input";
-
-import * as S from "./styles";
 import { HeaderProps } from "./types";
+import marvel from "../../assets/img/marvel.png";
+import * as S from "./styles";
 
 export const Header = ({ active }: HeaderProps) => {
   return (
@@ -10,7 +10,7 @@ export const Header = ({ active }: HeaderProps) => {
       <Container>
         <S.WrapperContent>
           <S.LinkTitle to={"/"}>
-            <h1>Marvel</h1>
+            <S.Image src={marvel} alt="Logo da Marvel" />
           </S.LinkTitle>
           {active && <Input />}
         </S.WrapperContent>

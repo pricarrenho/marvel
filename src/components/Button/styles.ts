@@ -14,7 +14,7 @@ const WrapperModifier = {
   secondary: (theme: DefaultTheme) => css`
     padding: 8px 16px;
     font-size: ${theme.font.sizes.xsm};
-    background-color: ${theme.colors.neutral[300]};
+    background-color: ${theme.colors.neutral[400]};
   `,
 
   tertiary: (theme: DefaultTheme) => css`
@@ -38,16 +38,16 @@ export const WrapperButton = styled.button<WrapperProps>`
     transition: 0.2s;
 
     &:hover:not(:disabled) {
-      background-color: ${theme.colors.neutral[300]};
+      background-color: ${theme.colors.neutral[400]};
     }
 
     &:disabled {
       cursor: initial;
-      opacity: 0.5;
+      opacity: 0.2;
     }
 
     &:focus {
-      background-color: ${theme.colors.neutral[300]};
+      background-color: ${theme.colors.neutral[400]};
     }
 
     ${$styleType && WrapperModifier[$styleType](theme)}

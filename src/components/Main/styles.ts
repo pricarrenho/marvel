@@ -1,5 +1,17 @@
 import styled, { css } from "styled-components";
 
+export const Wrapper = styled.div`
+  min-height: calc(100vh - 128px - 100px);
+  padding: 40px 0px 40px 0px;
+  display: flex;
+  flex-direction: column;
+  align-content: start;
+
+  @media (min-width: 800px) {
+    padding: 40px 0px 40px 0px;
+  }
+`;
+
 export const WrapperTable = styled.table`
   ${({ theme }) => css`
     border-spacing: 0 16px;
@@ -50,10 +62,11 @@ export const WrapperBody = styled.tbody`
       font-size: ${theme.font.sizes.sm};
       background-color: ${theme.colors.neutral[100]};
       color: ${theme.colors.neutral[600]};
+      height: auto;
     }
 
     td:first-child {
-      border-radius: 8px 0px 0px 8px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       gap: 16px;
@@ -71,6 +84,10 @@ export const WrapperBody = styled.tbody`
       td:nth-child(n + 2):nth-child(-n + 3) {
         display: table-cell;
       }
+
+      td:first-child {
+        border-radius: 8px 0px 0px 8px;
+      }
     }
   `}
 `;
@@ -86,7 +103,7 @@ export const Pagination = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   gap: 4px;
-  margin-top: 16px;
+  margin-top: auto;
   margin-bottom: 24px;
 
   @media (min-width: 800px) {

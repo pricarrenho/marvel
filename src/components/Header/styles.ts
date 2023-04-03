@@ -4,32 +4,31 @@ import styled, { css } from "styled-components";
 export const Wrapper = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.red};
-    padding: 16px 0px;
-    margin-bottom: 40px;
-
-    @media (min-width: 800px) {
-      margin-bottom: 104px;
-    }
   `}
 `;
 
 export const WrapperContent = styled.div`
-  ${({ theme }) => css`
+  ${() => css`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
 
     @media (min-width: 800px) {
       flex-direction: row;
       justify-content: space-between;
+      padding: 0;
     }
   `}
 `;
 
 export const LinkTitle = styled(Link)`
+  ${() => css``}
+`;
+
+export const Image = styled.img`
   ${({ theme }) => css`
-    font-size: ${theme.font.sizes.lg};
-    color: ${theme.colors.white};
+    width: 100%;
+    height: 100px;
+    object-fit: cover;
   `}
 `;
