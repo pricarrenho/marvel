@@ -64,6 +64,8 @@ $ yarn start
 
 [Marvel](https://www.marvel.pricarrenho.com.br) was developed to validate knowledge in React.
 
+<br/>
+
 ---
 
 <p align="center">
