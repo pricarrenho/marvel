@@ -6,24 +6,35 @@ import { Button } from "../Button";
 import { PaginationType } from "./types";
 import * as S from "./styles";
 import { Container } from "../Container";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Main = () => {
   const [characters, setCharacters] = useState<string[]>([]);
   const [totalCharacters, setTotalCharacters] = useState<number>(0);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [currentPageOffset, setTotalCurrentPageOffset] = useState<number>(
+    Number(searchParams.get("page")) || 1
+  );
+  const { debouncedFilter } = useGlobalContext();
 
   const handleClick = (value: PaginationType) => {
     setSearchParams({ page: value });
   };
 
-  const currentPageOffset = Number(searchParams.get("page")) || 1;
+  useEffect(() => {
+    setTotalCurrentPageOffset(Number(searchParams.get("page")) || 1);
+  }, [searchParams]);
 
   useEffect(() => {
-    getMarvelCharacters(currentPageOffset).then((value) => {
+    setTotalCurrentPageOffset(1);
+  }, [debouncedFilter]);
+
+  useEffect(() => {
+    getMarvelCharacters(currentPageOffset, debouncedFilter).then((value) => {
       setCharacters(value.data.data.results);
       setTotalCharacters(value.data.data.total);
     });
-  }, [currentPageOffset]);
+  }, [currentPageOffset, debouncedFilter]);
 
   const totalPages = Math.ceil(totalCharacters / 10);
 

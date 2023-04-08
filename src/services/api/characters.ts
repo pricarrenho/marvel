@@ -1,10 +1,9 @@
 import md5 from "md5";
 import axios from "axios";
 
-type getMarvelCharactersProps = number | undefined;
-
 export const getMarvelCharacters = async (
-  pagination: getMarvelCharactersProps
+  pagination?: number,
+  name?: string
 ) => {
   const url = "https://gateway.marvel.com/v1/public/characters";
   const timestamp = new Date().getTime();
@@ -24,6 +23,7 @@ export const getMarvelCharacters = async (
       hash,
       limit,
       offset: page,
+      nameStartsWith: name || undefined,
     },
   });
 };

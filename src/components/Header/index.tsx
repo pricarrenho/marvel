@@ -3,8 +3,11 @@ import { Input } from "../Input";
 import { HeaderProps } from "./types";
 import marvel from "../../assets/img/marvel.png";
 import * as S from "./styles";
+import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Header = ({ active }: HeaderProps) => {
+  const { filterValue, setFilterValue } = useGlobalContext();
+
   return (
     <S.Wrapper>
       <Container>
@@ -12,7 +15,7 @@ export const Header = ({ active }: HeaderProps) => {
           <S.LinkTitle to={"/"}>
             <S.Image src={marvel} alt="Logo da Marvel" />
           </S.LinkTitle>
-          {active && <Input />}
+          {active && <Input value={filterValue} onChange={setFilterValue} />}
         </S.WrapperContent>
       </Container>
     </S.Wrapper>
