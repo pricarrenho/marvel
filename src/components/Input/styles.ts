@@ -8,9 +8,7 @@ export const Wrapper = styled.div`
   padding-bottom: 24px;
 
   @media (min-width: 800px) {
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
+    align-items: start;
     padding-bottom: 0;
   }
 `;
@@ -26,8 +24,7 @@ export const WrapperInput = styled.input`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     height: 24px;
-    padding-left: 8px;
-    padding-right: 8px;
+    padding: 14px 16px;
     outline-color: ${theme.colors.white};
     border-radius: 4px;
     border: 2px solid ${theme.colors.white};

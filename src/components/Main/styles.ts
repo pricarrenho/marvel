@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
@@ -12,84 +13,87 @@ export const Wrapper = styled.div`
   }
 `;
 
-export const WrapperTable = styled.table`
+export const Titles = styled.div`
   ${({ theme }) => css`
-    border-spacing: 0 16px;
-    width: 100%;
-  `}
-`;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 0px 24px 16px 24px;
 
-export const WrapperHead = styled.thead`
-  ${({ theme }) => css`
-    text-align: left;
+    font-size: ${theme.font.sizes.sm};
+    color: ${theme.colors.neutral[700]};
 
-    th {
-      font-size: ${theme.font.sizes.md};
-      color: ${theme.colors.neutral[700]};
-      padding: 0px 24px;
-    }
-
-    th:nth-child(n + 2):nth-child(-n + 3) {
+    h2:not(:first-child) {
       display: none;
     }
 
     @media (min-width: 800px) {
-      th:nth-child(n + 2):nth-child(-n + 3) {
-        display: table-cell;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      padding: 0px 24px 16px 24px;
+
+      h2:not(:first-child) {
+        display: grid;
       }
     }
   `}
 `;
 
-export const WrapperBody = styled.tbody`
+export const LinkWrapper = styled(Link)`
   ${({ theme }) => css`
-    span {
-      display: flex;
-    }
+    background-color: ${theme.colors.neutral[100]};
+    border-radius: 4px;
+    margin-bottom: 24px;
+    transition: 0.2s;
 
-    a {
-      text-decoration: none;
-      color: ${theme.colors.neutral[600]};
-
-      &:hover {
-        color: ${theme.colors.red};
-      }
-    }
-
-    td {
-      padding: 24px;
-      height: 54px;
-      font-size: ${theme.font.sizes.sm};
-      background-color: ${theme.colors.neutral[100]};
-      color: ${theme.colors.neutral[600]};
-      height: auto;
-    }
-
-    td:first-child {
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    td:last-child {
-      border-radius: 0px 8px 8px 0px;
-    }
-
-    td:nth-child(n + 2):nth-child(-n + 3) {
-      display: none;
-    }
-
-    @media (min-width: 800px) {
-      td:nth-child(n + 2):nth-child(-n + 3) {
-        display: table-cell;
-      }
-
-      td:first-child {
-        border-radius: 8px 0px 0px 8px;
-      }
+    &:hover {
+      background-color: ${theme.colors.neutral[300]};
     }
   `}
+`;
+
+export const WrapperCard = styled.div`
+  ${({ theme }) => css`
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    padding: 24px;
+
+    font-size: ${theme.font.sizes.sm};
+
+    color: ${theme.colors.neutral[600]};
+
+    @media (min-width: 800px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  `}
+`;
+
+export const WrapperCardImage = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  font-weight: bold;
+`;
+
+export const WrapperCardSeries = styled.div`
+  display: none;
+
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+`;
+
+export const WrapperCardEvents = styled.div`
+  display: none;
+
+  @media (min-width: 800px) {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 `;
 
 export const Image = styled.img`

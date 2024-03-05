@@ -15,7 +15,13 @@ export const Header = ({ active }: HeaderProps) => {
           <S.LinkTitle to={"/"}>
             <S.Image src={marvel} alt="Logo da Marvel" />
           </S.LinkTitle>
-          {active && <Input value={filterValue} onChange={setFilterValue} />}
+          {active && (
+            <Input
+              value={filterValue}
+              onChange={setFilterValue}
+              name="searchInput"
+            />
+          )}
         </S.WrapperContent>
       </Container>
     </S.Wrapper>

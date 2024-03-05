@@ -1,11 +1,14 @@
 import * as S from "./styles";
 import { InputProps } from "./types";
 
-export const Input = ({ value, onChange }: InputProps) => {
+export const Input = ({ value, onChange, name }: InputProps) => {
   return (
     <S.Wrapper>
-      <S.WrapperLabel>Pesquise por personagem</S.WrapperLabel>
+      <S.WrapperLabel htmlFor={name}>Pesquise por personagem</S.WrapperLabel>
+
       <S.WrapperInput
+        name={name}
+        id={name}
         value={value}
         onChange={(event) => onChange(event.target.value)}
       />
