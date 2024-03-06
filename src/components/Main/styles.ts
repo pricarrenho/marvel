@@ -121,6 +121,8 @@ export const Image = styled.img`
     width: 72px;
     height: 72px;
     border-radius: ${theme.borderRadius};
+    object-fit: cover;
+    object-position: left;
   `}
 `;
 

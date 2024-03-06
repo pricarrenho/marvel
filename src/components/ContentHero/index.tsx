@@ -50,7 +50,7 @@ export const ContentHero = () => {
                       alt={item.id}
                     />
 
-                    <div>
+                    <S.SecondElement>
                       <S.Title>{item.name}</S.Title>
 
                       <S.WrapperButton>
@@ -75,7 +75,7 @@ export const ContentHero = () => {
                           Histórias
                         </Button>
                       </S.WrapperButton>
-                    </div>
+                    </S.SecondElement>
 
                     <S.Link to="/">Voltar</S.Link>
                   </S.WrapperContent>

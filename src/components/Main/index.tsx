@@ -61,7 +61,7 @@ export const Main = () => {
                   <S.WrapperCardImage>
                     <S.Image
                       src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                      alt={item.name}
+                      alt={`Imagem do herói ${item.name}`}
                     />
                     <span>{item.name}</span>
                   </S.WrapperCardImage>
@@ -88,12 +88,16 @@ export const Main = () => {
             <S.Pagination>
               {!(currentPageOffset === 1) && (
                 <>
-                  <S.LinkPagination to="/?page=1">
+                  <S.LinkPagination
+                    to="/?page=1"
+                    aria-label="Botão para voltar para a primeira página"
+                  >
                     <MdKeyboardDoubleArrowLeft />
                   </S.LinkPagination>
 
                   <S.LinkPagination
                     to={`/?page=${String(currentPageOffset - 1)}`}
+                    aria-label="Botão para voltar uma página"
                   >
                     <MdKeyboardArrowLeft />
                   </S.LinkPagination>
@@ -108,6 +112,7 @@ export const Main = () => {
                     <S.LinkPagination
                       key={index}
                       to={`/?page=${String(buttonOffset)}`}
+                      aria-label={`Botão para ir até a página ${buttonOffset}`}
                       $currentButton={buttonOffset === currentPageOffset}
                     >
                       {buttonOffset}
@@ -123,11 +128,15 @@ export const Main = () => {
                 <>
                   <S.LinkPagination
                     to={`/?page=${String(currentPageOffset + 1)}`}
+                    aria-label="Botão para ir uma página pra frente"
                   >
                     <MdKeyboardArrowRight />
                   </S.LinkPagination>
 
-                  <S.LinkPagination to={`/?page=${String(totalPages)}`}>
+                  <S.LinkPagination
+                    to={`/?page=${String(totalPages)}`}
+                    aria-label="Botão para ir até a última página"
+                  >
                     <MdKeyboardDoubleArrowRight />
                   </S.LinkPagination>
                 </>

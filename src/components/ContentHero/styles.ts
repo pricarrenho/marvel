@@ -27,7 +27,21 @@ export const Image = styled.img`
     max-width: 300px;
     border-radius: ${theme.borderRadius};
     object-fit: cover;
+    object-position: left;
+    order: 2;
+
+    @media (min-width: 800px) {
+      order: 1;
+    }
   `}
+`;
+
+export const SecondElement = styled.div`
+  order: 3;
+
+  @media (min-width: 800px) {
+    order: 2;
+  }
 `;
 
 export const WrapperButton = styled.div`
@@ -59,6 +73,7 @@ export const Link = styled(LinkStyled)`
     border-radius: ${theme.borderRadius};
     transition: background ${theme.transition};
     align-self: flex-start;
+    order: 1;
 
     font-weight: bold;
     background-color: ${theme.colors.red[200]};
@@ -66,6 +81,10 @@ export const Link = styled(LinkStyled)`
 
     &:hover {
       background-color: ${theme.colors.red[300]};
+    }
+
+    @media (min-width: 800px) {
+      order: 3;
     }
   `}
 `;
