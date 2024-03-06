@@ -4,12 +4,11 @@ type ButtonType =
   | AnchorHTMLAttributes<HTMLAnchorElement>
   | ButtonHTMLAttributes<HTMLButtonElement>;
 
-export type ButtonStyleType = "primary" | "secondary" | "tertiary";
+export type ButtonStyleType = "primary";
 
 export type ButtonProps = {
   children?: string | number;
   styleType: ButtonStyleType;
 
-  icon?: "doubleArrowLeft" | "doubleArrowRight" | "arrowLeft" | "arrowRight";
   as?: React.ElementType;
 } & ButtonType;

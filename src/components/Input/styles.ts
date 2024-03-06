@@ -26,7 +26,7 @@ export const WrapperInput = styled.input`
     height: 24px;
     padding: 14px 16px;
     outline-color: ${theme.colors.white};
-    border-radius: 4px;
+    border-radius: ${theme.borderRadius};
     border: 2px solid ${theme.colors.white};
   `}
 `;

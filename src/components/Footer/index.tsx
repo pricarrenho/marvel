@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Container } from "../Container";
+import { FaHeart } from "react-icons/fa";
+
 import * as S from "./styles";
 
 function Footer() {
@@ -8,10 +10,10 @@ function Footer() {
       <Container>
         <S.Content>
           <S.ContentText>
-            Desenvolvido com 💜 por
+            Desenvolvido com <FaHeart color="white" /> por {""}
             <span>
               <Link to={"https://pricarrenho.com.br"} target="_blank">
-                <b> Priscilla Carrenho</b>
+                <b>Priscilla Carrenho</b>
               </Link>
             </span>
           </S.ContentText>

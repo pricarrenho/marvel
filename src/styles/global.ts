@@ -46,7 +46,7 @@ export const GlobalStyle = createGlobalStyle`
 
     a {
       text-decoration: none;
-      color: ${theme.colors.white};
+      color: ${theme.colors.neutral[700]};
       font-size: ${theme.font.sizes.xsm};
     }
   `}

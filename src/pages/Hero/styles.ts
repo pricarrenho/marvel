@@ -7,9 +7,11 @@ export const WrapperContent = styled.div`
 `;
 
 export const Image = styled.img`
-  max-width: 300px;
-  border-radius: 8px;
-  object-fit: cover;
+  ${({ theme }) => css`
+    max-width: 300px;
+    border-radius: ${theme.borderRadius};
+    object-fit: cover;
+  `}
 `;
 
 export const WrapperButton = styled.div`
@@ -32,7 +34,7 @@ export const WrapperContentText = styled.div`
     padding: 24px;
     margin-top: 48px;
     width: 100%;
-    border-radius: 8px;
+    border-radius: ${theme.borderRadius};
   `}
 `;
 

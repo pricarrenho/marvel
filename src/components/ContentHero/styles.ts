@@ -1,12 +1,12 @@
 import styled, { css } from "styled-components";
+import { Link as LinkStyled } from "react-router-dom";
 
 export const Wrapper = styled.div`
-  min-height: calc(100vh - 104px - 100px);
+  min-height: calc(100vh - 104px - 67px);
   padding: 40px 0px 40px 0px;
-
-  @media (min-width: 800px) {
-    padding: 40px 0px 40px 0px;
-  }
+  display: flex;
+  flex-direction: column;
+  align-content: start;
 `;
 
 export const WrapperContent = styled.div`
@@ -16,16 +16,18 @@ export const WrapperContent = styled.div`
   gap: 24px;
 
   @media (min-width: 800px) {
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     justify-items: initial;
     gap: 48px;
   }
 `;
 
 export const Image = styled.img`
-  max-width: 300px;
-  border-radius: 8px;
-  object-fit: cover;
+  ${({ theme }) => css`
+    max-width: 300px;
+    border-radius: ${theme.borderRadius};
+    object-fit: cover;
+  `}
 `;
 
 export const WrapperButton = styled.div`
@@ -51,12 +53,29 @@ export const Title = styled.h2`
   `}
 `;
 
+export const Link = styled(LinkStyled)`
+  ${({ theme }) => css`
+    padding: 12px 16px;
+    border-radius: ${theme.borderRadius};
+    transition: background ${theme.transition};
+    align-self: flex-start;
+
+    font-weight: bold;
+    background-color: ${theme.colors.red[200]};
+    color: ${theme.colors.white};
+
+    &:hover {
+      background-color: ${theme.colors.red[300]};
+    }
+  `}
+`;
+
 export const WrapperContentText = styled.div`
   ${({ theme }) => css`
     background-color: ${theme.colors.neutral[100]};
     padding: 32px;
     margin-top: 48px;
-    border-radius: 8px;
+    border-radius: ${theme.borderRadius};
 
     @media (min-width: 800px) {
       padding: 24px;

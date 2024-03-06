@@ -7,19 +7,19 @@ type WrapperProps = {
 
 const WrapperModifier = {
   primary: (theme: DefaultTheme) => css`
-    padding: 8px 16px;
-    font-size: ${theme.font.sizes.xsm};
-  `,
-
-  secondary: (theme: DefaultTheme) => css`
-    padding: 8px 16px;
-    font-size: ${theme.font.sizes.xsm};
-    background-color: ${theme.colors.neutral[400]};
-  `,
-
-  tertiary: (theme: DefaultTheme) => css`
     padding: 14px 64px;
+    background-color: ${theme.colors.neutral[100]};
+    color: ${theme.colors.neutral[700]};
+    font-weight: 200;
     font-size: ${theme.font.sizes.sm};
+
+    &:hover {
+      background-color: ${theme.colors.neutral[400]};
+    }
+
+    &:focus {
+      background-color: ${theme.colors.neutral[400]};
+    }
 
     @media (min-width: 800px) {
       padding: 14px;
@@ -31,24 +31,9 @@ const WrapperModifier = {
 export const WrapperButton = styled.button<WrapperProps>`
   ${({ theme, $styleType }) => css`
     border: none;
-    border-radius: 4px;
+    border-radius: ${theme.borderRadius};
     cursor: pointer;
-    background-color: ${theme.colors.neutral[100]};
-    color: ${theme.colors.neutral[700]};
-    transition: 0.2s;
-
-    &:hover:not(:disabled) {
-      background-color: ${theme.colors.neutral[400]};
-    }
-
-    &:disabled {
-      cursor: initial;
-      opacity: 0.2;
-    }
-
-    &:focus {
-      background-color: ${theme.colors.neutral[400]};
-    }
+    transition: background ${theme.transition};
 
     ${$styleType && WrapperModifier[$styleType](theme)}
   `}

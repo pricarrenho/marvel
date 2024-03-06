@@ -1,7 +1,13 @@
 const colors = {
   black: "#13131A",
   white: "#FFFFFF",
-  red: "#ed1a23",
+
+  red: {
+    100: " #ff6666",
+    200: "#ed1a23",
+    300: " #cc0000",
+  },
+
   neutral: {
     50: "#fafafa",
     100: "#f5f5f5",
@@ -27,10 +33,16 @@ const font = {
   },
 };
 
+const borderRadius = "4px";
+
+const transition = "0.2s";
+
 export const themeWhite = {
   colors: {
     ...colors,
     background: colors.white,
   },
   font,
+  borderRadius,
+  transition,
 };

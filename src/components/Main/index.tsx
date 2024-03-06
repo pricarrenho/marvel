@@ -1,27 +1,26 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getMarvelCharacters } from "../../services/api/characters";
-import { Link } from "react-router-dom";
-import { Button } from "../Button";
-import { PaginationType } from "./types";
-import * as S from "./styles";
 import { Container } from "../Container";
 import { useGlobalContext } from "../../context/GlobalContext";
 import { Loading } from "../Loading";
+import {
+  MdKeyboardDoubleArrowLeft,
+  MdKeyboardDoubleArrowRight,
+  MdKeyboardArrowLeft,
+  MdKeyboardArrowRight,
+} from "react-icons/md";
+import * as S from "./styles";
 
 export const Main = () => {
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState<string[]>([]);
   const [totalCharacters, setTotalCharacters] = useState<number>(0);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [currentPageOffset, setTotalCurrentPageOffset] = useState<number>(
     Number(searchParams.get("page")) || 1
   );
   const { debouncedFilter } = useGlobalContext();
-
-  const handleClick = (value: PaginationType) => {
-    setSearchParams({ page: value });
-  };
 
   useEffect(() => {
     setTotalCurrentPageOffset(Number(searchParams.get("page")) || 1);
@@ -32,12 +31,12 @@ export const Main = () => {
   }, [debouncedFilter]);
 
   useEffect(() => {
-    setLoading(true);
+    setIsLoading(true);
 
     getMarvelCharacters(currentPageOffset, debouncedFilter).then((value) => {
       setCharacters(value.data.data.results);
       setTotalCharacters(value.data.data.total);
-      setLoading(false);
+      setIsLoading(false);
     });
   }, [currentPageOffset, debouncedFilter]);
 
@@ -46,7 +45,7 @@ export const Main = () => {
   return (
     <Container>
       <S.Wrapper>
-        {loading ? (
+        {isLoading ? (
           <Loading />
         ) : (
           <>
@@ -57,7 +56,7 @@ export const Main = () => {
             </S.Titles>
 
             {characters?.map((item: any) => (
-              <S.LinkWrapper to={`/hero/${item.id}`}>
+              <S.LinkWrapper to={`/hero/${item.id}`} key={item.id}>
                 <S.WrapperCard>
                   <S.WrapperCardImage>
                     <S.Image
@@ -87,36 +86,32 @@ export const Main = () => {
             ))}
 
             <S.Pagination>
-              <Button
-                styleType="primary"
-                onClick={() => handleClick("1")}
-                icon="doubleArrowLeft"
-                disabled={currentPageOffset === 1}
-              />
+              {!(currentPageOffset === 1) && (
+                <>
+                  <S.LinkPagination to="/?page=1">
+                    <MdKeyboardDoubleArrowLeft />
+                  </S.LinkPagination>
 
-              <Button
-                styleType="primary"
-                onClick={() => handleClick(String(currentPageOffset - 1))}
-                icon="arrowLeft"
-                disabled={currentPageOffset === 1}
-              />
+                  <S.LinkPagination
+                    to={`/?page=${String(currentPageOffset - 1)}`}
+                  >
+                    <MdKeyboardArrowLeft />
+                  </S.LinkPagination>
+                </>
+              )}
 
               {Array.from(Array(totalPages).keys())
                 .map((_, index) => {
                   const buttonOffset = index + 1;
 
                   return (
-                    <Button
+                    <S.LinkPagination
                       key={index}
-                      styleType={
-                        buttonOffset === currentPageOffset
-                          ? "secondary"
-                          : "primary"
-                      }
-                      onClick={() => handleClick(String(buttonOffset))}
+                      to={`/?page=${String(buttonOffset)}`}
+                      $currentButton={buttonOffset === currentPageOffset}
                     >
                       {buttonOffset}
-                    </Button>
+                    </S.LinkPagination>
                   );
                 })
                 .slice(
@@ -124,19 +119,19 @@ export const Main = () => {
                   currentPageOffset <= 1 ? 3 : currentPageOffset + 1
                 )}
 
-              <Button
-                styleType="primary"
-                onClick={() => handleClick(String(currentPageOffset + 1))}
-                icon="arrowRight"
-                disabled={currentPageOffset === totalPages}
-              />
+              {!(currentPageOffset === totalPages) && (
+                <>
+                  <S.LinkPagination
+                    to={`/?page=${String(currentPageOffset + 1)}`}
+                  >
+                    <MdKeyboardArrowRight />
+                  </S.LinkPagination>
 
-              <Button
-                styleType="primary"
-                onClick={() => handleClick(String(totalPages))}
-                icon="doubleArrowRight"
-                disabled={currentPageOffset === totalPages}
-              />
+                  <S.LinkPagination to={`/?page=${String(totalPages)}`}>
+                    <MdKeyboardDoubleArrowRight />
+                  </S.LinkPagination>
+                </>
+              )}
             </S.Pagination>
           </>
         )}
