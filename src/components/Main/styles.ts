@@ -138,3 +138,9 @@ export const Pagination = styled.div`
     gap: 8px;
   }
 `;
+
+export const CharacterNotFound = styled.p`
+  ${({ theme }) => css`
+    font-size: ${theme.font.sizes.md};
+  `}
+`;

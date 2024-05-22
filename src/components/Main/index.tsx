@@ -47,6 +47,10 @@ export const Main = () => {
       <S.Wrapper>
         {isLoading ? (
           <Loading />
+        ) : characters.length === 0 ? (
+          <S.CharacterNotFound>
+            Não foi encontrado nenhum personagem, tente novamente.
+          </S.CharacterNotFound>
         ) : (
           <>
             <S.Titles>
