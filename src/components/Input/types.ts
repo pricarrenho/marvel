@@ -1,5 +1,6 @@
 export type InputProps = {
-  value: string;
   name: string;
+  value: string;
   onChange: (value: string) => void;
+  onClear: (value: string) => void;
 };

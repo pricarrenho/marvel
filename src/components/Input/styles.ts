@@ -20,7 +20,13 @@ export const WrapperLabel = styled.label`
   `}
 `;
 
-export const WrapperInput = styled.input`
+export const WrapperInput = styled.div`
+  ${() => css`
+    position: relative;
+  `}
+`;
+
+export const Input = styled.input`
   ${({ theme }) => css`
     font-size: ${theme.font.sizes.sm};
     height: 24px;
@@ -28,5 +34,18 @@ export const WrapperInput = styled.input`
     outline-color: ${theme.colors.white};
     border-radius: ${theme.borderRadius};
     border: 2px solid ${theme.colors.white};
+  `}
+`;
+
+export const InputButtonClear = styled.button`
+  ${() => css`
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 12px;
+
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
   `}
 `;

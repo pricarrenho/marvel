@@ -17,9 +17,10 @@ export const Header = ({ active }: HeaderProps) => {
           </S.LinkTitle>
           {active && (
             <Input
+              name="searchInput"
               value={filterValue}
               onChange={setFilterValue}
-              name="searchInput"
+              onClear={setFilterValue}
             />
           )}
         </S.WrapperContent>
