@@ -9,6 +9,7 @@ export type ButtonStyleType = "primary";
 export type ButtonProps = {
   children?: string | number;
   styleType: ButtonStyleType;
+  active?: boolean;
 
   as?: React.ElementType;
 } & ButtonType;

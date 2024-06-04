@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMarvelHero } from "../../services/api/hero";
 import { Container } from "../Container";
-import { ContentToShowType } from "./types";
 import { Button } from "../Button";
-import Footer from "../Footer";
-import * as S from "./styles";
 import { Loading } from "../Loading";
+import Footer from "../Footer";
+import { ContentToShowType } from "./types";
+import * as S from "./styles";
 
 export const ContentHero = () => {
   const params = useParams();
@@ -14,6 +14,8 @@ export const ContentHero = () => {
   const [hero, setHero] = useState<string[]>([]);
   const [contentToShow, setContentToShow] =
     useState<ContentToShowType>("series");
+
+  const contentRef = useRef<HTMLDivElement>(null);
 
   const title = {
     series: "Series",
@@ -32,6 +34,15 @@ export const ContentHero = () => {
 
   const handleClick = (value: ContentToShowType) => {
     setContentToShow(value);
+
+    const isMobile = window.innerWidth < 800;
+
+    if (isMobile) {
+      window.scrollTo({
+        top: contentRef?.current?.offsetTop,
+        behavior: "smooth",
+      });
+    }
   };
 
   return (
@@ -55,22 +66,25 @@ export const ContentHero = () => {
 
                       <S.WrapperButton>
                         <Button
-                          styleType={"primary"}
+                          styleType="primary"
                           onClick={() => handleClick("series")}
+                          active={contentToShow === "series"}
                         >
                           Series
                         </Button>
 
                         <Button
-                          styleType={"primary"}
+                          styleType="primary"
                           onClick={() => handleClick("events")}
+                          active={contentToShow === "events"}
                         >
                           Eventos
                         </Button>
 
                         <Button
-                          styleType={"primary"}
+                          styleType="primary"
                           onClick={() => handleClick("stories")}
+                          active={contentToShow === "stories"}
                         >
                           Histórias
                         </Button>
@@ -80,7 +94,7 @@ export const ContentHero = () => {
                     <S.Link to="/">Voltar</S.Link>
                   </S.WrapperContent>
 
-                  <S.WrapperContentText>
+                  <S.WrapperContentText ref={contentRef}>
                     <S.Subtitle>{title[contentToShow]}</S.Subtitle>
 
                     <ul>

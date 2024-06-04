@@ -13,11 +13,9 @@ const WrapperModifier = {
     font-weight: 200;
     font-size: ${theme.font.sizes.sm};
 
-    &:hover {
-      background-color: ${theme.colors.neutral[400]};
-    }
-
-    &:focus {
+    &:hover,
+    &:focus,
+    &[data-active="true"] {
       background-color: ${theme.colors.neutral[400]};
     }
 
