@@ -1,9 +1,13 @@
 import * as S from "./styles";
 
-export const Loading = () => {
+type LoadingProps = {
+  size?: number;
+};
+
+export const Loading = ({ size = 48 }: LoadingProps) => {
   return (
     <S.Wrapper>
-      <S.Loading />
+      <S.Loading size={size} />
     </S.Wrapper>
   );
 };

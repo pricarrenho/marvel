@@ -13,14 +13,13 @@ import {
 import * as S from "./styles";
 
 export const Main = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const [characters, setCharacters] = useState<string[]>([]);
   const [totalCharacters, setTotalCharacters] = useState<number>(0);
   const [searchParams] = useSearchParams();
   const [currentPageOffset, setTotalCurrentPageOffset] = useState<number>(
     Number(searchParams.get("page")) || 1
   );
-  const { debouncedFilter } = useGlobalContext();
+  const { debouncedFilter, isLoading, setIsLoading } = useGlobalContext();
 
   useEffect(() => {
     setTotalCurrentPageOffset(Number(searchParams.get("page")) || 1);
@@ -38,7 +37,7 @@ export const Main = () => {
       setTotalCharacters(value.data.data.total);
       setIsLoading(false);
     });
-  }, [currentPageOffset, debouncedFilter]);
+  }, [currentPageOffset, debouncedFilter, setIsLoading]);
 
   const totalPages = Math.ceil(totalCharacters / 10);
 

@@ -43,9 +43,24 @@ export const InputButtonClear = styled.button`
     bottom: 50%;
     transform: translateY(50%);
     right: 12px;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
     background-color: transparent;
     cursor: pointer;
+  `}
+`;
+
+export const InputIcon = styled.div`
+  ${() => css`
+    position: absolute;
+    bottom: 50%;
+    transform: translateY(50%);
+    right: 12px;
   `}
 `;

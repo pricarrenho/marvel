@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -7,23 +7,29 @@ export const Wrapper = styled.div`
   align-items: center;
 `;
 
-export const Loading = styled.div`
-  width: 48px;
-  height: 48px;
-  border: 5px solid #fff;
-  border-bottom-color: red;
-  border-left-color: red;
-  border-radius: 50%;
-  display: inline-block;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
+type LoadingProps = {
+  size: number;
+};
 
-  @keyframes rotation {
-    0% {
-      transform: rotate(0deg);
+export const Loading = styled.div<LoadingProps>`
+  ${({ size }) => css`
+    width: ${size}px;
+    height: ${size}px;
+    border: 3px solid #fff;
+    border-bottom-color: red;
+    border-left-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
     }
-    100% {
-      transform: rotate(360deg);
-    }
-  }
+  `}
 `;

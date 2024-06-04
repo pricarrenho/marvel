@@ -39,7 +39,7 @@ export const ContentHero = () => {
       <Container>
         <S.Wrapper>
           {isLoading ? (
-            <Loading />
+            <Loading size={48} />
           ) : (
             <>
               {hero?.map((item: any) => (

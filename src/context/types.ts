@@ -7,5 +7,7 @@ export type GlobalProviderProps = {
 export type GlobalContextType = {
   filterValue: string;
   setFilterValue: (value: string) => void;
+  isLoading: boolean;
+  setIsLoading: (value: boolean) => void;
   debouncedFilter: string;
 };

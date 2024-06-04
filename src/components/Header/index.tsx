@@ -6,7 +6,7 @@ import * as S from "./styles";
 import { useGlobalContext } from "../../context/GlobalContext";
 
 export const Header = ({ active }: HeaderProps) => {
-  const { filterValue, setFilterValue } = useGlobalContext();
+  const { filterValue, setFilterValue, isLoading } = useGlobalContext();
 
   return (
     <S.Wrapper>
@@ -21,6 +21,7 @@ export const Header = ({ active }: HeaderProps) => {
               value={filterValue}
               onChange={setFilterValue}
               onClear={setFilterValue}
+              isLoading={isLoading}
             />
           )}
         </S.WrapperContent>

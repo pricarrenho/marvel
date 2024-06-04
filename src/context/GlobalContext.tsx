@@ -8,14 +8,17 @@ export const GlobalContext = createContext<GlobalContextType>(
 
 export const GlobalProvider = ({ children }: GlobalProviderProps) => {
   const [filterValue, setFilterValue] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const debouncedFilter: string = useDebounce(filterValue, 1000);
+  const debouncedFilter: string = useDebounce(filterValue, 300);
 
   return (
     <GlobalContext.Provider
       value={{
         filterValue,
         setFilterValue,
+        isLoading,
+        setIsLoading,
         debouncedFilter,
       }}
     >
