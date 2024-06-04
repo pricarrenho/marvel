@@ -54,7 +54,7 @@ type LinkPaginationProps = {
 export const LinkPagination = styled(Link)<LinkPaginationProps>`
   ${({ theme, $currentButton }) => css`
     margin-left: 8px;
-    padding: 8px 16px;
+    padding: 8px;
     border-radius: ${theme.borderRadius};
     transition: background ${theme.transition};
 
@@ -68,6 +68,14 @@ export const LinkPagination = styled(Link)<LinkPaginationProps>`
       background-color: ${theme.colors.red[200]};
       color: white;
     `}
+
+    @media (min-width: 400px) {
+      padding: 8px 10px;
+    }
+
+    @media (min-width: 800px) {
+      padding: 8px 16px;
+    }
   `}
 `;
 
