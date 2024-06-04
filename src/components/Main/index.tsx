@@ -41,6 +41,12 @@ export const Main = () => {
 
   const totalPages = Math.ceil(totalCharacters / 10);
 
+  const scrollOnTop = () => {
+    window.scrollTo({
+      top: 0,
+    });
+  };
+
   return (
     <Container>
       <S.Wrapper>
@@ -92,6 +98,7 @@ export const Main = () => {
               {!(currentPageOffset === 1) && (
                 <>
                   <S.LinkPagination
+                    onClick={scrollOnTop}
                     to="/?page=1"
                     aria-label="Botão para voltar para a primeira página"
                   >
@@ -99,6 +106,7 @@ export const Main = () => {
                   </S.LinkPagination>
 
                   <S.LinkPagination
+                    onClick={scrollOnTop}
                     to={`/?page=${String(currentPageOffset - 1)}`}
                     aria-label="Botão para voltar uma página"
                   >
@@ -113,6 +121,7 @@ export const Main = () => {
 
                   return (
                     <S.LinkPagination
+                      onClick={scrollOnTop}
                       key={index}
                       to={`/?page=${String(buttonOffset)}`}
                       aria-label={`Botão para ir até a página ${buttonOffset}`}
@@ -130,6 +139,7 @@ export const Main = () => {
               {!(currentPageOffset === totalPages) && (
                 <>
                   <S.LinkPagination
+                    onClick={scrollOnTop}
                     to={`/?page=${String(currentPageOffset + 1)}`}
                     aria-label="Botão para ir uma página pra frente"
                   >
@@ -137,6 +147,7 @@ export const Main = () => {
                   </S.LinkPagination>
 
                   <S.LinkPagination
+                    onClick={scrollOnTop}
                     to={`/?page=${String(totalPages)}`}
                     aria-label="Botão para ir até a última página"
                   >

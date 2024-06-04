@@ -5,13 +5,13 @@ import { Container } from "../Container";
 import { Button } from "../Button";
 import { Loading } from "../Loading";
 import Footer from "../Footer";
-import { ContentToShowType } from "./types";
+import { ContentToShowType, Hero } from "./types";
 import * as S from "./styles";
 
 export const ContentHero = () => {
   const params = useParams();
   const [isLoading, setIsLoading] = useState(false);
-  const [hero, setHero] = useState<string[]>([]);
+  const [hero, setHero] = useState<Hero>();
   const [contentToShow, setContentToShow] =
     useState<ContentToShowType>("series");
 
@@ -27,7 +27,7 @@ export const ContentHero = () => {
     setIsLoading(true);
 
     getMarvelHero(params.id).then((value) => {
-      setHero(value.data.data.results);
+      setHero(value.data.data.results[0]);
       setIsLoading(false);
     });
   }, [params.id]);
@@ -49,65 +49,59 @@ export const ContentHero = () => {
     <>
       <Container>
         <S.Wrapper>
-          {isLoading ? (
-            <Loading size={48} />
-          ) : (
-            <>
-              {hero?.map((item: any) => (
-                <div key={item.id}>
-                  <S.WrapperContent>
-                    <S.Image
-                      src={`${item.thumbnail.path}.${item.thumbnail.extension}`}
-                      alt={item.id}
-                    />
+          {isLoading && <Loading size={48} />}
 
-                    <S.SecondElement>
-                      <S.Title>{item.name}</S.Title>
+          {hero && (
+            <div key={hero.id}>
+              <S.WrapperContent>
+                <S.Image
+                  src={`${hero.thumbnail.path}.${hero.thumbnail.extension}`}
+                  alt={hero.id}
+                />
 
-                      <S.WrapperButton>
-                        <Button
-                          styleType="primary"
-                          onClick={() => handleClick("series")}
-                          active={contentToShow === "series"}
-                        >
-                          Series
-                        </Button>
+                <S.SecondElement>
+                  <S.Title>{hero.name}</S.Title>
 
-                        <Button
-                          styleType="primary"
-                          onClick={() => handleClick("events")}
-                          active={contentToShow === "events"}
-                        >
-                          Eventos
-                        </Button>
+                  <S.WrapperButton>
+                    <Button
+                      styleType="primary"
+                      onClick={() => handleClick("series")}
+                      active={contentToShow === "series"}
+                    >
+                      Series
+                    </Button>
 
-                        <Button
-                          styleType="primary"
-                          onClick={() => handleClick("stories")}
-                          active={contentToShow === "stories"}
-                        >
-                          Histórias
-                        </Button>
-                      </S.WrapperButton>
-                    </S.SecondElement>
+                    <Button
+                      styleType="primary"
+                      onClick={() => handleClick("events")}
+                      active={contentToShow === "events"}
+                    >
+                      Eventos
+                    </Button>
 
-                    <S.Link to="/">Voltar</S.Link>
-                  </S.WrapperContent>
+                    <Button
+                      styleType="primary"
+                      onClick={() => handleClick("stories")}
+                      active={contentToShow === "stories"}
+                    >
+                      Histórias
+                    </Button>
+                  </S.WrapperButton>
+                </S.SecondElement>
 
-                  <S.WrapperContentText ref={contentRef}>
-                    <S.Subtitle>{title[contentToShow]}</S.Subtitle>
+                <S.Link to="/">Voltar</S.Link>
+              </S.WrapperContent>
 
-                    <ul>
-                      {item[contentToShow].items.map((item: any) => (
-                        <S.Description key={item.name}>
-                          {item.name}
-                        </S.Description>
-                      ))}
-                    </ul>
-                  </S.WrapperContentText>
-                </div>
-              ))}
-            </>
+              <S.WrapperContentText ref={contentRef}>
+                <S.Subtitle>{title[contentToShow]}</S.Subtitle>
+
+                <ul>
+                  {hero[contentToShow].items.map((item) => (
+                    <S.Description key={item.name}>{item.name}</S.Description>
+                  ))}
+                </ul>
+              </S.WrapperContentText>
+            </div>
           )}
         </S.Wrapper>
       </Container>

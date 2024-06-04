@@ -16,7 +16,7 @@ const WrapperModifier = {
     &:hover,
     &:focus,
     &[data-active="true"] {
-      background-color: ${theme.colors.neutral[400]};
+      background-color: ${theme.colors.neutral[300]};
     }
 
     @media (min-width: 800px) {
